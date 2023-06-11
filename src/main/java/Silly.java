@@ -72,12 +72,16 @@ public class Silly implements Comparable<Silly>{
         this.name = "Silly #" + number;
     }
 
+    public Silly(String s1, String s2){
+        this.name = s1 + s2;
+    }
+
     /**
-     * TODO (Task 1): Create another constructor that takes in TWO parameters,
-     *       both of which are strings.
-     *       Afterwards, set this.name to the concatenation of both
-     *       strings (e.g. this.name = [first string] + [second string]).
-     *       Make sure you document this method!
+     * Creates a new Silly object.
+     * This constructor takes in two arguments, both of which are strings.
+     *
+     * Sets attribute name as the concatenation of the first and second argument,
+     * in that order.
      */
 
 
@@ -106,17 +110,11 @@ public class Silly implements Comparable<Silly>{
         Silly x = new Silly("something");
         Silly y = new Silly("something else");
 
-        /**
-         * TODO (Task 2): Below are a bunch of calls to countStatic using
-         *                two different instances of Silly.
-         *                Fill out the expected_values array with the
-         *                values that countStatic will return at each call.
-         */
         x.countStatic();
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -133,7 +131,7 @@ public class Silly implements Comparable<Silly>{
      */
     @Override
     public String toString(){
-        // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -157,10 +155,13 @@ public class Silly implements Comparable<Silly>{
             return false;
         }
 
-        Silly other = (Silly) o; // To access .name of o, we need to cast it.
+        Silly other = (Silly) o;
 
-        // Hint: to compare strings, we need to use .equals()
-        //       e.g. s1.equals(s2)
+        if (other.name.equals(this.name)){
+            return true;
+        }  else {
+            return false;
+        }
     }
 
     /**
@@ -185,25 +186,8 @@ public class Silly implements Comparable<Silly>{
      */
     @Override
     public int compareTo(Silly other) {
-        /**
-         * TODO (Task 5): Implement the body of this method.
-         *                A positive number should be returned if this.name
-         *                is longer than other.name, a negative number if
-         *                other.name is longer than this.name, and 0 if
-         *                the lengths are equal.
-         *                You can get the length of a string by using the
-         *                .length() method.
-         */
+        return this.name.length() - other.name.length();
+        }
     }
 
-    /*
-     * TODO (Task 6): Submit the changes you made on GitHub!
-     *                When you submit it, go to the 'Actions' tab. You should
-     *                be able to see this exercise being autograded!
-     *
-     *                You can click on the ongoing action to see more details.
-     *                If the tests don't pass, look at the results and revise
-     *                accordingly.
-     */
-}
 
